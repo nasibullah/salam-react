@@ -1,0 +1,154 @@
+import { useState, useEffect } from "react";
+// import axios from "axios";
+import ResCard from "./ResCard";
+const Body = () => {
+  const [originalData, setOriginalData] = useState([]);
+  const [resdata, setResdata] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  // useState:
+  // const arr = useState("");
+  // const searchQuery = arr[0];
+  // const setSearchQuery = arr[1];
+
+  //--Fetching data using axios
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:4000/resData")
+  //     .then((res) => {
+  //       setResdata(res.data), setOriginalData(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  //--This code for refreshing the filtered data
+  // useEffect(() => {
+  //   const storedData = localStorage.getItem("filteredResData");
+  //   if (storedData) {
+  //     setResdata(JSON.parse(storedData)); // Restore filtered data from localStorage
+  //   } else {
+  //     fetchData(); // Fetch data from API if localStorage is empty
+  //   }
+  // }, []);
+
+  //--Fetching data using useEffect
+  // useEffect(async () => {
+  //   const data = await fetch("http://localhost:4000/resData");
+  //   const newData = await data.json();
+  //   console.log(newData);
+  //   setResdata(newData);
+  //   setOriginalData(newData);
+  //   // localStorage.setItem("filteredResData", JSON.stringify(newData));
+  // }, []);
+  useEffect(async () => {
+    const fetchData = await fetch("http://localhost:4000/resData").then((res) =>
+      res.json()
+    );
+    setOriginalData(fetchData);
+    setResdata(fetchData);
+  }, []);
+  //--Fetching data using fetch
+  // const fetchData = async () => {
+  //   const data = await fetch("http://localhost:4000/resData");
+  //   const newData = await data.json();
+  //   console.log(newData);
+  //   setResdata(newData);
+  //   setOriginalData(newData);
+  //   localStorage.setItem("filteredResData", JSON.stringify(newData));
+  // };
+
+  // const handleSearch = () => {
+  //   if (!searchQuery || searchQuery.trim() === "") {
+  //     setResdata(originalData);
+  //   } else {
+  //     const searchedData = originalData.filter((res) =>
+  //       res.title?.toLowerCase().includes(searchQuery.toLowerCase())
+  //     );
+  //     setResdata(searchedData);
+  //   }
+  // };
+
+  return (
+    <div className="body">
+      <div className="bar">
+        <div className="search">
+          <input
+            className="search-field"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              // if (!searchQuery || searchQuery.trim() === "") {
+              //   setResdata(originalData);
+              // } else {
+              const searchedData = originalData.filter((res) =>
+                res?.title.toLowerCase().includes(searchQuery.toLowerCase())
+              );
+              setResdata(searchedData);
+              console.log("Searched data");
+              // }
+            }}
+          >
+            Search
+          </button>
+          {/* <button className="search-btn" onClick={handleSearch}>
+            Search
+          </button> */}
+        </div>
+        <div className="top-btn">
+          <button
+            className="top-res-btn"
+            onClick={() => {
+              console.log("The button is clicked!");
+              const filteredData = resdata.filter((res) => res?.rate > 4);
+              setResdata(filteredData);
+              // localStorage.setItem(
+              //   "filteredResData",
+              //   JSON.stringify(filteredData)
+              // );
+            }}
+          >
+            Top Restaurants
+          </button>
+          <button
+            className="all-res-btn"
+            onClick={() => {
+              console.log("The button is clicked!");
+              // const filteredData = resdata.filter((res) => res?.rate > 4);
+              setResdata(originalData);
+              setSearchQuery("");
+            }}
+          >
+            All Restaurants
+          </button>
+        </div>
+      </div>
+      <div className="card-container">
+        {/* <Card data={resData[0]} />
+          <Card data={resData[1]} />
+          <Card data={resData[2]} />
+          <Card data={resData[3]} />
+          <Card data={resData[4]} />
+          <Card data={resData[5]} /> */}
+        {/* {resData.map((items) => (
+            <Card key={items.id} data={items} />
+          ))} */}
+        {/* {resData.map((item) => (
+            <Card key={item.id} data={item} />
+          ))} */}
+        {resdata.map((item) => (
+          <ResCard key={item.id} data={item} />
+        ))}
+
+        {/* <Card image={food2} title={"Naseeb Resturant"} />
+          <Card image={food5} title={"Kunduz Kabab"} />
+          <Card image={food4} title={"Spin Cake"} />
+          <Card image={food6} title={"Shinvari Karaye"} /> */}
+      </div>
+    </div>
+  );
+};
+
+export default Body;
