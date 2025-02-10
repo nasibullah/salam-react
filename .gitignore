@@ -1,0 +1,58 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build files
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+debug.log*
+output.log
+
+# Editor and OS-specific files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cache & Temporary files
+.cache/
+.next/
+out/
+coverage/
+*.log
+
+# Git merge conflict files
+*.orig
+
+# Ignore test coverage
+coverage/
+*.lcov
+
+# Ignore eslint and prettier files
+.eslintcache
+.prettierignore
+
+# Ignore Storybook files (if used)
+.storybook/
+
+# Ignore TypeScript build artifacts (if using TypeScript)
+*.tsbuildinfo
+
+# Ignore generated static files
+public/static/

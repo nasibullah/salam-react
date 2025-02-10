@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 // import axios from "axios";
 import ResCard from "./ResCard";
+import Skeleton from "./Skeleton";
 const Body = () => {
   const [originalData, setOriginalData] = useState([]);
   const [resdata, setResdata] = useState([]);
@@ -66,6 +67,30 @@ const Body = () => {
   //     setResdata(searchedData);
   //   }
   // };
+  // if (resdata.length === 0) {
+  //   return (
+  //     <div className="skeleton">
+  //       <Skeleton />
+  //       <Skeleton />
+  //       <Skeleton />
+  //       <Skeleton />
+  //       <Skeleton />
+  //       <Skeleton />
+  //     </div>
+  //   );
+  // }
+  // } else {
+  //   return (
+  //     <div className="skeleton">
+  //       <Skeleton />
+  //       <Skeleton />
+  //       <Skeleton />
+  //       <Skeleton />
+  //       <Skeleton />
+  //       <Skeleton />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="body">
@@ -116,7 +141,6 @@ const Body = () => {
             className="all-res-btn"
             onClick={() => {
               console.log("The button is clicked!");
-              // const filteredData = resdata.filter((res) => res?.rate > 4);
               setResdata(originalData);
               setSearchQuery("");
             }}
@@ -132,16 +156,19 @@ const Body = () => {
           <Card data={resData[3]} />
           <Card data={resData[4]} />
           <Card data={resData[5]} /> */}
-        {/* {resData.map((items) => (
-            <Card key={items.id} data={items} />
-          ))} */}
-        {/* {resData.map((item) => (
-            <Card key={item.id} data={item} />
-          ))} */}
-        {resdata.map((item) => (
-          <ResCard key={item.id} data={item} />
-        ))}
-
+        {resdata.length === 0
+          ? // <div className="skeleton">
+            //   <Skeleton />
+            //   <Skeleton />
+            //   <Skeleton />
+            //   <Skeleton />
+            //   <Skeleton />
+            //   <Skeleton />
+            // </div>
+            Array(6)
+              .fill(0) //_ is a placeholder for the array value (0 in this case), but it's unused.
+              .map((_, index) => <Skeleton key={index} />) //Since the values in the array (0s from .fill(0)) are not needed, we use _ to indicate that we intentionally ignore it.
+          : resdata.map((item) => <ResCard key={item.id} data={item} />)}
         {/* <Card image={food2} title={"Naseeb Resturant"} />
           <Card image={food5} title={"Kunduz Kabab"} />
           <Card image={food4} title={"Spin Cake"} />

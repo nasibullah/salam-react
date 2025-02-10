@@ -46,6 +46,24 @@
   color: #fff;
   /* font-weight: bold; */
 }
+.login-button {
+  background-color: #ff6347;
+  color: #333;
+  padding: 4px 20px;
+  border: 2px solid #ff6347;
+  /* border-radius: 4px; */
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.4s;
+  margin-top: -5px;
+}
+
+.login-button:hover {
+  /* background-color: #45a049; */
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  color: #fff;
+}
 .body {
   padding: 40;
   /* display: flex; */
@@ -150,6 +168,52 @@
   padding: 10px;
   transition: 0.5s;
   cursor: pointer;
+}
+.skeleton {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  /* margin-left: 50px; */
+}
+.skeleton-container {
+  padding: 20px;
+  /* display: flex; */
+}
+.card-skeleton {
+  background-color: #f0f0f0;
+  width: 200px;
+  height: 130px;
+  margin-top: 10px;
+  /* margin-left: 50px; */
+  border-radius: 10;
+  padding: 10px;
+}
+.card-title-skeleton {
+  background-color: #f0f0f0;
+  width: 180px;
+  height: 5px;
+  margin-top: 20px;
+  /* margin-left: 50px; */
+  padding: 10px;
+  border-radius: 4;
+}
+.card-cuisines-skeleton {
+  background-color: #f0f0f0;
+  width: 160px;
+  height: 5px;
+  margin-top: 20px;
+  /* margin-left: 50px; */
+  padding: 10px;
+  border-radius: 4;
+}
+.card-des-skeleton {
+  background-color: #f0f0f0;
+  width: 130px;
+  height: 5px;
+  margin-top: 20px;
+  /* margin-left: 50px; */
+  padding: 10px;
+  border-radius: 4;
 }
 .h4-rate {
   margin-top: -15px;
