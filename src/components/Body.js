@@ -6,6 +6,7 @@ const Body = () => {
   const [originalData, setOriginalData] = useState([]);
   const [resdata, setResdata] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true);
   // useState:
   // const arr = useState("");
   // const searchQuery = arr[0];
@@ -40,13 +41,38 @@ const Body = () => {
   //   setOriginalData(newData);
   //   // localStorage.setItem("filteredResData", JSON.stringify(newData));
   // }, []);
-  useEffect(async () => {
-    const fetchData = await fetch("http://localhost:4000/resData").then((res) =>
-      res.json()
-    );
-    setOriginalData(fetchData);
-    setResdata(fetchData);
+  // useEffect(async () => {
+  //   const timer = setTimeout(async () => {
+  //     const fetchData = await fetch("http://localhost:4000/resData").then(
+  //       (res) => res.json()
+  //     );
+  //     setOriginalData(fetchData);
+  //     setResdata(fetchData);
+  //     setLoading(false);
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchData();
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/resData");
+      const data = await response.json();
+      setOriginalData(data);
+      setResdata(data);
+    } catch {
+      console.log("Error fetching data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   //--Fetching data using fetch
   // const fetchData = async () => {
   //   const data = await fetch("http://localhost:4000/resData");
@@ -156,7 +182,7 @@ const Body = () => {
           <Card data={resData[3]} />
           <Card data={resData[4]} />
           <Card data={resData[5]} /> */}
-        {resdata.length === 0
+        {/* {resdata.length === 0
           ? // <div className="skeleton">
             //   <Skeleton />
             //   <Skeleton />
@@ -173,6 +199,11 @@ const Body = () => {
           <Card image={food5} title={"Kunduz Kabab"} />
           <Card image={food4} title={"Spin Cake"} />
           <Card image={food6} title={"Shinvari Karaye"} /> */}
+        {loading
+          ? Array(6)
+              .fill(0)
+              .map((_, index) => <Skeleton key={index} />)
+          : resdata.map((item) => <ResCard key={item.id} data={item} />)}
       </div>
     </div>
   );
