@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo1 from "../../public/logo1.png";
 
 const ResCard = ({ data }) => {
@@ -19,7 +20,9 @@ const ResCard = ({ data }) => {
         <h4 className="h4-rate">Avg Rate: {rate}</h4>
         <div className="star-visit">
           <h4 className="stars">{stars}</h4>
-          <button className="visit-btn">Visit</button>
+          <Link to={`/restaurant/${id}`}>
+            <button className="visit-btn">Visit</button>
+          </Link>
         </div>
       </div>
     </div>

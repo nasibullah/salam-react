@@ -22,6 +22,7 @@
   font-weight: bold;
   /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+  font-family: Arial, sans-serif;
   color: #6d3c1f;
 }
 .navbar .nav-links {
@@ -161,9 +162,10 @@
   /* height: 370px; */
   /* border: #333 solid 1px; */
   transition: 0.5s;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 .card:hover {
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 10px #fcb6a9;
   border-radius: 10;
   padding: 10px;
   transition: 0.5s;
@@ -257,6 +259,8 @@
 }
 .h4 {
   color: #868686;
+  font-size: 12px;
+  margin-bottom: 25px;
 }
 .h4-cuisines {
   color: #868686;
@@ -279,4 +283,212 @@
   border: #333 solid 1px;
   border-radius: 5;
   background-color: black;
+}
+.our-services {
+  text-align: center;
+  color: #575555;
+  font-family: Arial, sans-serif;
+}
+.service-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0px;
+}
+.service-card {
+  width: 400px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  font-family: Arial, sans-serif;
+  /* cursor: pointer; */
+}
+.service-title-container {
+  background-color: #fad8d2;
+  /* width: 100%; */
+  /* height: 100px; */
+  padding: 2px 5px 2px 5px;
+  border-radius: 5px 5px 0px 0px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+.service-name {
+  /* font-size: 16px; */
+  color: #ff6347;
+}
+.service-des {
+  padding: 0px 20px 0px 20px;
+}
+
+/* --------------About Us Page Style--------------------- */
+.about-us-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.about-content {
+  width: 50%;
+}
+
+.about-image {
+  width: 45%;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.sub-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff6347;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.list li {
+  margin-bottom: 8px;
+}
+
+.contact a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-us-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-content,
+  .about-image {
+    width: 100%;
+  }
+
+  .about-image img {
+    margin-top: 20px;
+  }
+}
+/* --------------Contact Page Style--------------------- */
+.contact-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.contact-info {
+  width: 45%;
+}
+
+.heading {
+  font-size: 32px;
+  color: #ff6347; /* Tomato color */
+}
+
+.sub-heading {
+  font-size: 24px;
+  color: #ff6347; /* Tomato color */
+  margin-bottom: 15px;
+}
+
+.contact-details p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.contact-details a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+.contact-form {
+  width: 50%;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form input,
+form textarea {
+  width: 95%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submit-btn {
+  background: #ff6347; /* Tomato color */
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background: #e5533c; /* Darker tomato shade */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }

@@ -66,6 +66,7 @@ const Body = () => {
       const data = await response.json();
       setOriginalData(data);
       setResdata(data);
+      console.log(data);
     } catch {
       console.log("Error fetching data");
     } finally {
@@ -200,7 +201,7 @@ const Body = () => {
           <Card image={food4} title={"Spin Cake"} />
           <Card image={food6} title={"Shinvari Karaye"} /> */}
         {loading
-          ? Array(6)
+          ? Array(12)
               .fill(0)
               .map((_, index) => <Skeleton key={index} />)
           : resdata.map((item) => <ResCard key={item.id} data={item} />)}
